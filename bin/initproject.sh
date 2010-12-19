@@ -4,6 +4,7 @@ echo "Updating git submodules"
 git submodule update --init --recursive
 
 echo "Creating static folders"
+mkdir ./webapps/static
 mkdir ./webapps/static/img
 mkdir ./webapps/static/css
 mkdir ./webapps/static/js
