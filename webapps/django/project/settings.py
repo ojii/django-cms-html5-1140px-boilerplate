@@ -124,6 +124,7 @@ INSTALLED_APPS = (
     'publisher',
     'menus',
     'compressor',
+    'easy_thumbnails',
     'filer',
     'south',
 )
