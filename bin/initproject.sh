@@ -18,6 +18,10 @@ cp ./lib/html5-boilerplate/robots.txt ./webapps/static/robots.txt
 cp -r ./lib/html5-boilerplate/js ./webapps/static/js
 cp -r ./lib/html5-boilerplate/css ./webapps/static/css
 
+echo "Copying the parts of 1140px css grid that we need"
+cp ./lib/1140px/1140.css ./webapps/static/css/1140.css
+cp ./lib/1140px/ie.css ./webapps/static/css/ie.css
+
 echo "Splitting up html5-boilerplate css"
 SPLIT=`grep -n "/* Primary Styles" ./webapps/static/css/style.css | awk -F":" '{ print $1 }'`
 SPLITHEAD=`expr $SPLIT - 1`
