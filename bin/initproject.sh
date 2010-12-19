@@ -15,8 +15,8 @@ cp ./lib/html5-boilerplate/404.html ./webapps/django/project/templates/404.html
 cp ./lib/html5-boilerplate/apple-touch-icon.png ./webapps/static/img/apple-touch-icon.png
 cp ./lib/html5-boilerplate/favicon.ico ./webapps/static/img/favicon.ico
 cp ./lib/html5-boilerplate/robots.txt ./webapps/static/robots.txt
-cp -r ./lib/html5-boilerplate/js ./webapps/static/js
-cp -r ./lib/html5-boilerplate/css ./webapps/static/css
+cp -r ./lib/html5-boilerplate/js ./webapps/static/
+cp -r ./lib/html5-boilerplate/css ./webapps/static/
 
 echo "Copying the parts of 1140px css grid that we need"
 cp ./lib/1140px/1140.css ./webapps/static/css/1140.css
