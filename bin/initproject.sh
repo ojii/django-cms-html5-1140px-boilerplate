@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 echo "Updating git submodules"
 git submodule update --init --recursive
 

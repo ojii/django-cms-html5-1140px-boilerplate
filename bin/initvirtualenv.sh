@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
-
-mkvirtualenv -p python2.6 --no-site-packages $1
+source /usr/local/bin/virtualenvwrapper.sh
+echo "Installing all needed modules into a virtualenv"
+echo "Please enter the name of your virtualenv: "
+read virtualenvname
+mkvirtualenv -p python2.6 --no-site-packages $virtualenvname
 pip install Django
 pip install PIL
 pip install mysql-python
