@@ -30,7 +30,6 @@ tail -n +$SPLITTAIL ./webapps/static/css/style.css > ./webapps/static/css/boiler
 
 echo "Removing the parts we dont want..."
 rm -rf .git
-rm -rf bin
 rm README.rst
 rm ./webapps/static/css/style.css
 
