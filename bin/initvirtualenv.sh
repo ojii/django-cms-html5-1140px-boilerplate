@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# run these commands prior to running this script
-# sudo apt-get install libjpeg libjpeg-dev
-# sudo apt-get install libfreetype6 libfreetype6-dev
-# sudo apt-get install libmysqlclient-dev python2.6-dev
 mkvirtualenv -p python2.6 --no-site-packages $1
 pip install Django
 pip install PIL
