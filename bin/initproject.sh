@@ -48,9 +48,9 @@ cd webapps/django/project/
 cp local_settings.py.sample local_settings.py
 echo "What is your database username: "
 read dbname
-sed -e s/dbname/$dbname/ local_settings.py
-sed -e s/dbuser/$dbname/ local_settings.py
-sed -e s/projectroot/$(pwd)/ local_settings.py
+sed -i s/dbname/$dbname/g local_settings.py
+sed -i s/dbuser/$dbname/g local_settings.py
+sed -i s@projectroot@$(pwd)@g local_settings.py
 
 echo "Initing the new git project..."
 git init
