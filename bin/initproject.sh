@@ -33,7 +33,27 @@ rm -rf .git
 rm README.rst
 rm ./webapps/static/css/style.css
 
+echo "Creating symlinks"
+cd webapps/static
+echo "What is the name of your virtualenv: "
+read virtualenvname
+ln -s $HOME/Envs/$virtualenvname/lib/python2.7/site-packages/django/contrib/adm$
+ln -s $HOME/Envs/$virtualenvname/src/django-cms/cms/media/cms
+ln -s $HOME/Envs/$virtualenvname/src/filer/filer/media/filer
+ln -s $HOME/Envs/$virtualenvname/src/multilingual/multilingual/media/multilingu$
+cd ../..
+
+echo "Creating local_settings.py"
+cd webapps/django/project/
+cp local_settings.py.sample local_settings.py
+echo "What is your database username: "
+read dbname
+sed -e s/dbname/$dbname/ local_settings.py
+sed -e s/dbuser/$dbname/ local_settings.py
+sed -e s/projectroot/$(pwd)/ local_settings.py 
+
 echo "Initing the new git project..."
 git init
 git add .
 git commit -m "Initial Commit"
+
