@@ -58,10 +58,3 @@ echo "Initing the new git project..."
 git init
 git add .
 git commit -m "Initial Commit"
-
-echo "Initializing database..."
-cd webapps/django/project/
-workon $virtualenvname
-python manage.py syncdb
-python manage.py migrate
-python manage.py runserver
