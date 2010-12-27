@@ -51,6 +51,7 @@ read dbname
 sed -i s/dbname/$dbname/g local_settings.py
 sed -i s/dbuser/$dbname/g local_settings.py
 sed -i s@projectroot@$(pwd)@g local_settings.py
+cd ../../..
 
 echo "Initing the new git project..."
 git init
