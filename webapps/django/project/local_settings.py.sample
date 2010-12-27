@@ -11,5 +11,5 @@ DATABASE_PORT = ''             # Set to empty string for default. Not used with 
 
 # Absolute path to the directory that holds the project sources
 # Make sure to use a training slash
-PROJECT_ROOT = '/home/user/Projects/projectname/src/'
+PROJECT_ROOT = 'projectroot'
 
