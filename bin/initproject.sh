@@ -58,3 +58,5 @@ echo "Initing the new git project..."
 git init
 git add .
 git commit -m "Initial Commit"
+
+echo "Woohoo! All done. Now run syncdb, migrate and runserver!"
