@@ -1,5 +1,20 @@
 #!/usr/bin/env bash
-source /usr/local/bin/virtualenvwrapper.sh
+echo "Installing all needed modules into a virtualenv"
+echo "Please enter the name of your virtualenv: "
+read virtualenvname
+virtualenv --no-site-packages $virtualenvname
+cd $virtualenvname
+. bin/activate
+pip install Django
+pip install PIL
+pip install mysql-python
+pip install south
+pip install BeautifulSoup
+pip install -e git://github.com/divio/django-cms.git#egg=django-cms
+pip install -e git://github.com/dziegler/django-css.git#egg=compressor
+pip install -e git://github.com/SmileyChris/easy-thumbnails.git#egg=easy-thumbnails
+pip install -e git://github.com/stefanfoulis/django-filer.git@master#egg=filer
+pip install -e git://github.com/ojii/django-multilingual-ng.git#egg=multilingual
 echo "Updating git submodules..."
 git submodule update --init --recursive
 
@@ -38,8 +53,6 @@ rm ./webapps/static/css/style.css
 
 echo "Creating symlinks..."
 cd webapps/static
-echo "What is the name of your virtualenv: "
-read virtualenvname
 ln -s $HOME/Envs/$virtualenvname/lib/python2.7/site-packages/django/contrib/admin/media
 ln -s $HOME/Envs/$virtualenvname/src/django-cms/cms/media/cms
 ln -s $HOME/Envs/$virtualenvname/src/filer/filer/media/filer
@@ -51,8 +64,11 @@ cd webapps/django/project/
 cp local_settings.py.sample local_settings.py
 echo "What is your database username: "
 read dbname
+echo "Enter new password for that database: "
+read dbpassword
 sed -i s/dbname/$dbname/g local_settings.py
 sed -i s/dbuser/$dbname/g local_settings.py
+sed -i s/abc123/$dbpassword/g local_settings.py
 cd ../../..
 sed -i s@projectroot@$(pwd)/@g webapps/django/project/local_settings.py
 
@@ -62,3 +78,16 @@ git add .
 git commit -m "Initial Commit"
 
 echo "Woohoo! All done. Now run syncdb, migrate and runserver!"
+
+echo "Enter mysql root password: "
+stty -echo
+read rootpassword
+stty echo
+
+mysql --user=root --password=$rootpassword -e "DELETE FROM user WHERE User = '$dbname';" mysql
+mysql --user=root --password=$rootpassword -e "DROP DATABASE IF EXISTS $dbname;" mysql
+mysqladmin --user=root --password=$rootpassword --character-set=utf8 --default-character-set=utf8 create $dname
+mysql --user=root --password=$rootpassword -e "CREATE USER $dbname IDENTIFIED BY '$dbpassword';" mysql
+mysql ---user=root --password=$rootpassword -e "CREATE DATABASE $dbname CHARACTER SET utf8 COLLATE utf8_general_ci;"
+mysql ---user=root --password=$rootpassword -e "GRANT ALL ON $dbname.* TO $dbname;"
+mysqladmin --user=root --password=$rootpassword reload
