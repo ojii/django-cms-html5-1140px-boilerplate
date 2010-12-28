@@ -36,7 +36,7 @@ Recipe
   
 ::
 
-  git clonegit://github.com/bitmazk/django-cms-html5-1140px-boilerplate.git yourproject 
+  git clone git://github.com/bitmazk/django-cms-html5-1140px-boilerplate.git yourproject 
   cd yourproject
   ./bin/initvirtualenv.sh
   ./bin/initproject.sh
